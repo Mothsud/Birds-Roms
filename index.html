@@ -3,35 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vault | Under Maintenance</title>
-    <!-- Reusing your font style -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Early Bird Technologies | Vault Expansion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Replicated from mothsud.github.io/Birds-Roms style */
         :root {
-            --bg: #0b0e14;
-            --card: #161b22;
+            /* Dark Theme for Hero */
+            --bg-dark: #0b0e14;
+            --card-dark: #161b22;
             --accent: #58a6ff;
-            --text: #c9d1d9;
-            --border: #30363d;
+            --text-dark: #c9d1d9;
+            --border-dark: #30363d;
+            /* Light Theme for Catalog */
+            --bg-light: #f8fafc;
+            --card-light: #ffffff;
+            --text-light: #0f172a;
+            --text-sub: #64748b;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            align-items: center;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 80vh;
+            display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            position: relative;
             overflow: hidden;
         }
 
-        /* Glassmorphism Background Effect */
-        body::before {
+        .hero::before {
             content: "";
             position: absolute;
             top: -10%;
@@ -42,51 +53,30 @@
             z-index: -1;
         }
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-            z-index: 1;
-        }
-
         .maintenance-card {
-            background: var(--card);
-            border: 1px solid var(--border);
+            background: var(--card-dark);
+            border: 1px solid var(--border-dark);
             border-radius: 16px;
             padding: 3rem;
             max-width: 600px;
+            text-align: center;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             transition: transform 0.3s ease;
-        }
-
-        .maintenance-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+            z-index: 1;
         }
 
         .logo {
             font-weight: 800;
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             letter-spacing: 4px;
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 10px 0;
-        }
+        h1 { font-size: 2.5rem; margin: 10px 0; font-weight: 800; }
+        .accent-text { color: var(--accent); }
 
-        .accent {
-            color: var(--accent);
-        }
-
-        p {
-            color: #8b949e;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Progress Bar */
         .progress-container {
             width: 100%;
             background: #0d1117;
@@ -94,65 +84,174 @@
             height: 8px;
             margin: 2rem 0;
             overflow: hidden;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-dark);
         }
 
         .progress-bar {
             height: 100%;
             background: var(--accent);
-            width: 0%; /* Animated via JS */
+            width: 0%; 
             box-shadow: 0 0 15px var(--accent);
             transition: width 2s ease-in-out;
         }
 
-        .status-tag {
-            display: inline-block;
-            background: rgba(88, 166, 255, 0.1);
+        /* --- CATALOG SECTION (Light Mode) --- */
+        .catalog-section {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            width: 100%;
+            padding: 5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .catalog-header { text-align: center; margin-bottom: 4rem; }
+        .catalog-header h2 { font-size: 2.5rem; font-weight: 800; margin: 0; letter-spacing: -1px; }
+        .catalog-header p { color: var(--text-sub); margin-top: 1rem; }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 90%;
+            max-width: 1100px;
+        }
+
+        .console-box {
+            background: var(--card-light);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .console-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .console-box h3 {
+            margin-top: 0;
             color: var(--accent);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+        }
+
+        .game-list li {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .game-list li::before {
+            content: "•";
+            color: var(--accent);
             font-weight: bold;
-            margin-top: 1rem;
+            margin-right: 10px;
         }
 
         footer {
-            position: absolute;
-            bottom: 2rem;
-            font-size: 0.8rem;
-            color: #484f58;
+            padding: 4rem 0;
+            width: 100%;
+            text-align: center;
+            background: var(--bg-light);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .catalog-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- HERO SECTION -->
+    <section class="hero">
         <div class="maintenance-card">
-            <div class="logo">VAULT</div>
-            <h1>Under <span class="accent">Construction.</span></h1>
-            <p>We are currently collecting more game roms to add to our website. Please check back soon!</p>
+            <div class="logo">Early Bird Technologies</div>
+            <h1>The Vault: <span class="accent-text">Phase II</span></h1>
+            <p style="color: #8b949e;">We are currently migrating and expanding our library to bring you the finest PAL preservation.</p>
             
             <div class="progress-container">
                 <div class="progress-bar" id="bar"></div>
             </div>
 
-            <div class="status-tag">STATUS: COLLECTING ROMS</div>
+            <div style="font-size: 0.8rem; font-weight: bold; color: var(--accent);">
+                STATUS: INGESTING NEW TITLES
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section class="catalog-section">
+        <div class="catalog-header">
+            <h2>Upcoming Additions</h2>
+            <p>A sneak peek at the legends joining the collection soon.</p>
+        </div>
+
+        <div class="catalog-grid">
+            <div class="console-box">
+                <h3>Nintendo Home</h3>
+                <ul class="game-list">
+                    <li>Zelda: Twilight Princess (GC)</li>
+                    <li>Metroid Prime Trilogy (Wii)</li>
+                    <li>Super Mario Galaxy 2 (Wii)</li>
+                    <li>Mario Kart: Double Dash (GC)</li>
+                    <li>Paper Mario: TTYD (GC)</li>
+                </ul>
+            </div>
+
+            <div class="console-box">
+                <h3>Handheld Legends</h3>
+                <ul class="game-list">
+                    <li>Pokémon HeartGold (DS)</li>
+                    <li>Zelda: Minish Cap (GBA)</li>
+                    <li>Fire Emblem Awakening (3DS)</li>
+                    <li>Metroid Fusion (GBA)</li>
+                    <li>Castlevania: Aria of Sorrow (GBA)</li>
+                </ul>
+            </div>
+
+            <div class="console-box">
+                <h3>Xbox 360 PAL</h3>
+                <ul class="game-list">
+                    <li>Halo 3</li>
+                    <li>Fable II</li>
+                    <li>Gears of War 2</li>
+                    <li>Alan Wake</li>
+                    <li>Lost Odyssey</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        &copy; 2026 Birds Roms | Preservation in Progress
+        &copy; 2026 Early Bird Technologies | Birds Roms Archive
     </footer>
 
     <script>
-        // Smoothly animate the progress bar on load
+        // Progress bar animation
         window.onload = function() {
             setTimeout(() => {
-                document.getElementById('bar').style.width = '5%';
+                document.getElementById('bar').style.width = '15%';
             }, 500);
         };
 
-        // Interactive subtle mouse-glow effect
+        // Subtle mouse glow
         document.addEventListener('mousemove', (e) => {
             const card = document.querySelector('.maintenance-card');
             const rect = card.getBoundingClientRect();
@@ -160,7 +259,7 @@
             const y = e.clientY - rect.top;
 
             if (x > 0 && y > 0 && x < rect.width && y < rect.height) {
-                card.style.boxShadow = `0 0 20px rgba(88, 166, 255, 0.15)`;
+                card.style.boxShadow = `0 0 30px rgba(88, 166, 255, 0.2)`;
             } else {
                 card.style.boxShadow = `0 20px 50px rgba(0,0,0,0.5)`;
             }
