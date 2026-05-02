@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault | Under Maintenance</title>
+    <!-- Reusing your font style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Replicated from mothsud.github.io/Birds-Roms style */
+        :root {
+            --bg: #0b0e14;
+            --card: #161b22;
+            --accent: #58a6ff;
+            --text: #c9d1d9;
+            --border: #30363d;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Background Effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(88, 166, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        .maintenance-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .maintenance-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        p {
+            color: #8b949e;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #0d1117;
+            border-radius: 10px;
+            height: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%; /* Animated via JS */
+            box-shadow: 0 0 15px var(--accent);
+            transition: width 2s ease-in-out;
+        }
+
+        .status-tag {
+            display: inline-block;
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            color: #484f58;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="maintenance-card">
+            <div class="logo">VAULT</div>
+            <h1>Under <span class="accent">Construction.</span></h1>
+            <p>We are currently collecting more game roms to add to our website. Please check back soon!</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+
+            <div class="status-tag">STATUS: COLLECTING ROMS</div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Birds Roms | Preservation in Progress
+    </footer>
+
+    <script>
+        // Smoothly animate the progress bar on load
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('bar').style.width = '5%';
+            }, 500);
+        };
+
+        // Interactive subtle mouse-glow effect
+        document.addEventListener('mousemove', (e) => {
+            const card = document.querySelector('.maintenance-card');
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            if (x > 0 && y > 0 && x < rect.width && y < rect.height) {
+                card.style.boxShadow = `0 0 20px rgba(88, 166, 255, 0.15)`;
+            } else {
+                card.style.boxShadow = `0 20px 50px rgba(0,0,0,0.5)`;
+            }
+        });
+    </script>
+</body>
+</html>
