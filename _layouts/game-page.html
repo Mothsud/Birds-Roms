@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<div class="vimm-style-container">
+    <h1>{{ page.title }} ({{ page.region }})</h1>
+    <hr>
+    <div class="game-info">
+        <img src="{{ page.box_art }}" alt="Box Art" style="width: 200px; float: left; margin-right: 20px;">
+        <p><strong>System:</strong> Game Boy Advance</p>
+        <p><strong>File Size:</strong> {{ page.size }}</p>
+        <p><strong>Format:</strong> .7z Archive</p>
+    </div>
+    <div style="clear: both;"></div>
+
+    <h3>Description</h3>
+    <p>{{ content }}</p>
+
+    <a href="{{ page.download_url }}" class="download-button">Download {{ page.title }}</a>
+</div>

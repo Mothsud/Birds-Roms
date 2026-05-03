@@ -1,0 +1,4 @@
+collections:
+  gba:
+    output: true
+    permalink: /gba/:name/

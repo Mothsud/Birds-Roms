@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GBA Library | Vault</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">VAULT</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="wii.html">Wii</a></li>
+            <li><a href="gamecube.html">GC</a></li>
+            <li><a href="ds.html">DS</a></li>
+            <li><a href="3ds.html">3DS</a></li>
+            <li><a href="gba.html">GBA</a></li>
+            <li><a href="?.html">Coming Soon</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Nintendo <span class="accent">GBA</span></h1>
+        <input type="text" id="search" onkeyup="filterTable()" placeholder="Search backups...">
+    </header>
+
+            <div class="gba-gallery">
+            {% for game in site.gba %}
+                <div class="game-card">
+                <a href="{{ game.url }}">
+                 <img src="{{ game.box_art }}" alt="{{ game.title }}">
+                 <h3>{{ game.title }}</h3>
+                  </a>
+                  <p>Region: {{ game.region }}</p>
+                </div>
+             {% endfor %}
+            </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
