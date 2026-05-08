@@ -1,6 +1,3 @@
----
-layout: default
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,22 +20,118 @@ layout: default
     </nav>
 
     <header>
-        <h1>Nintendo <span class="accent">GBA</span></h1>
+        <h1>Nintendo <span class="accent">Game Boy Advance</span></h1>
         <input type="text" id="search" onkeyup="filterTable()" placeholder="Search backups...">
     </header>
-
-            <div class="gba-gallery">
-            {% for game in site.gba %}
-                <div class="game-card">
-                <a href="{{ game.url }}">
-                 <img src="{{ game.box_art }}" alt="{{ game.title }}">
-                 <h3>{{ game.title }}</h3>
-                  </a>
-                  <p>Region: {{ game.region }}</p>
-                </div>
-             {% endfor %}
-            </div>
-
+    
+    <div class="rom-container">
+    <table id="romTable">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Region</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pokémon Emerald</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Pokemon%20-%20Emerald%20Version.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>The Legend of Zelda: The Minish Cap</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Legend%20of%20Zelda%2C%20The%20-%20The%20Minish%20Cap.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Metroid Fusion</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Metroid%20Fusion.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Castlevania: Aria of Sorrow</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Castlevania%20-%20Aria%20of%20Sorrow.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Mario Kart: Super Circuit</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Mario%20Kart%20-%20Super%20Circuit.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Fire Emblem</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Fire%20Emblem.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Golden Sun</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Golden%20Sun.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Golden Sun: The Lost Age</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Golden%20Sun%20-%20The%20Lost%20Age.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Advance Wars</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Advance%20Wars.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>WarioWare, Inc.: Minigame Mania</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/WarioWare%2C%20Inc.%20-%20Minigame%20Mania.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Metroid: Zero Mission</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Metroid%20-%20Zero%20Mission.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Mario & Luigi: Superstar Saga</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Mario%20%26%20Luigi%20-%20Superstar%20Saga.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Final Fantasy VI Advance</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Final%20Fantasy%20VI%20Advance.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Sonic Advance</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Sonic%20Advance.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Kirby & The Amazing Mirror</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Kirby%20%26%20The%20Amazing%20Mirror.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>F-Zero: GP Legend</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/F-Zero%20-%20GP%20Legend.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Donkey Kong Country</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Donkey%20Kong%20Country.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Yoshi's Island: Super Mario Advance 3</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Super%20Mario%20Advance%203%20-%20Yoshi%27s%20Island.7z" class="btn" download>DL</a></td>
+            </tr>
+            <tr>
+                <td>Astro Boy: Omega Factor</td>
+                <td>Europe</td>
+                <td><a href="http://birdsroms.duckdns.org/Astro%20Boy%20-%20Omega%20Factor.7z" class="btn" download>DL</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
     <script src="../script.js"></script>
 </body>
 </html>
