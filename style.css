@@ -7,20 +7,32 @@
 
 body {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    width: 100%;
     background: #f4f6f8;
     color: #333;
+    overflow-x: hidden;
+}
+
+.page-layout {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
 }
 
 /* Sidebar Styling */
 aside {
     width: 260px;
+    min-width: 260px;
     background: #ffffff;
     border-right: 1px solid #e1e4e8;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
+    min-height: 100vh;
 }
 
 .brand {
@@ -33,20 +45,38 @@ aside {
 }
 
 .nav-title {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #a0aec0;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    display: none;
 }
 
 .nav-list {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
+}
+
+.nav-list + .nav-list {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #e1e4e8;
+    border-bottom: none;
+    display: block;
 }
 
 .nav-list li {
     margin-bottom: 0.25rem;
+}
+
+.nav-list + .nav-list li {
+    flex: none;
+    margin-bottom: 0.25rem;
+}
+
+.nav-list + .nav-list a {
+    justify-content: space-between;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    white-space: normal;
 }
 
 .nav-list a {
@@ -75,9 +105,86 @@ aside {
 
 /* Main Content Area */
 main {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
     padding: 2rem;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > * {
+    width: min(100%, 1100px);
+}
+
+@media (max-width: 900px) {
+    .page-layout {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        min-width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e1e4e8;
+    }
+
+    main {
+        padding: 1.25rem;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+}
+
+.site-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: #ffffff;
+    border-top: 1px solid #e1e4e8;
+    color: #4a5568;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    position: relative;
+}
+
+.github-footer-link {
+    position: absolute;
+    left: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: #111827;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.github-footer-link:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.github-footer-link svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: currentColor;
 }
 
 .top-bar {
@@ -100,12 +207,41 @@ main {
     box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
 }
 
+.wide-text-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    width: 100%;
+}
+
+.wide-text-box {
+    width: 75%;
+    min-height: 110px;
+    max-width: 1200px;
+    padding: 0.9rem 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background: #fff;
+    color: #2d3748;
+    font-size: 1.25rem;
+    resize: vertical;
+    outline: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.wide-text-box:focus {
+    border-color: #2b6cb0;
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+}
+
 .section {
     background: #fff;
     border-radius: 8px;
     border: 1px solid #e1e4e8;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
+    width: min(100%, 1100px);
+    max-width: 100%;
 }
 
 .section-header {
@@ -113,6 +249,75 @@ main {
     margin-bottom: 1rem;
     color: #2d3748;
     font-weight: 600;
+}
+
+.section ul {
+    margin: 0 0 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.game-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #f8fafc;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    height: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.game-art {
+    display: block;
+    width: 82%;
+    max-width: 220px;
+    aspect-ratio: 4 / 5;
+    margin: 1rem auto 0;
+    background: linear-gradient(135deg, #dbeafe, #e2e8f0);
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.game-info {
+    width: 100%;
+    padding: 1rem;
+}
+
+.game-info h3 {
+    font-size: 1rem;
+    color: #1f2937;
+    margin-bottom: 0.35rem;
+    text-align: center;
+}
+
+.game-info p {
+    color: #718096;
+    font-size: 0.82rem;
+    text-align: center;
 }
 
 /* Table Design */
@@ -162,6 +367,162 @@ main {
 
 .btn-download:hover {
     background: #2c5282;
+}
+
+.game-detail-page {
+    width: min(100%, 1100px);
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+.game-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    background: #2b6cb0;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: background 0.15s ease;
+    min-width: 88px;
+}
+
+.back-button:hover {
+    background: #2c5282;
+}
+
+.game-detail-header h1 {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    color: #1f2937;
+    line-height: 1.2;
+}
+
+.game-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.cover-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 340px;
+}
+
+.cover-image {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #dbeafe, #e2e8f0);
+}
+
+.game-side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.game-meta {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 0.8rem 0.9rem;
+    color: #4a5568;
+}
+
+.meta-row span {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+.meta-row strong {
+    font-size: 0.95rem;
+    color: #1f2937;
+}
+
+.download-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.9rem 1.25rem;
+    background: #2b6cb0;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.15s ease;
+}
+
+.download-button:hover {
+    background: #2c5282;
+}
+
+.game-description-panel {
+    margin-top: 1.5rem;
+    background: #f8fafc;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    padding: 1.25rem;
+}
+
+.game-description-panel h2 {
+    font-size: 1.15rem;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+}
+
+.game-description-panel p {
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 0.98rem;
+}
+
+@media (max-width: 760px) {
+    .game-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cover-panel {
+        min-height: auto;
+    }
+
+    .meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 /* Error Pages Specific Styling */
